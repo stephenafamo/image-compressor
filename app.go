@@ -181,6 +181,11 @@ func (a *App) CompressFile(options CompressionOptions) error {
 		}
 	}
 
+	runtime.MessageDialog(a.ctx, runtime.MessageDialogOptions{
+		Type:    runtime.InfoDialog,
+		Message: "File compressed",
+	})
+
 	return nil
 }
 

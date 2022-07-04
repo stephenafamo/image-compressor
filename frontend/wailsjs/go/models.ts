@@ -1,5 +1,25 @@
 export namespace main {
 	
+	export class CompressionOptions {
+	    original_file_path: string;
+	    original_file_name: string;
+	    quality: number;
+	    max_width: number;
+	    max_height: number;
+	
+	    static createFrom(source: any = {}) {
+	        return new CompressionOptions(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.original_file_path = source["original_file_path"];
+	        this.original_file_name = source["original_file_name"];
+	        this.quality = source["quality"];
+	        this.max_width = source["max_width"];
+	        this.max_height = source["max_height"];
+	    }
+	}
 	export class FileInfo {
 	    path: string;
 	    name: string;
@@ -42,26 +62,6 @@ export namespace main {
 		    }
 		    return a;
 		}
-	}
-	export class CompressionOptions {
-	    original_file_path: string;
-	    original_file_name: string;
-	    quality: number;
-	    max_width: number;
-	    max_height: number;
-	
-	    static createFrom(source: any = {}) {
-	        return new CompressionOptions(source);
-	    }
-	
-	    constructor(source: any = {}) {
-	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.original_file_path = source["original_file_path"];
-	        this.original_file_name = source["original_file_name"];
-	        this.quality = source["quality"];
-	        this.max_width = source["max_width"];
-	        this.max_height = source["max_height"];
-	    }
 	}
 
 }
